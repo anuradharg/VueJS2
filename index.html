@@ -8,33 +8,17 @@
 </head>
 
 <body>
-    <div id="vue-app">
-        <!-- bag image -->
-        <div id="bag" v-bind:class={burst:ended}></div>
+    <h1>Multiple Vue Instances</h1>
 
-        <!-- bag health -->
-        <div id="bag-health">
-            <div v-bind:style="{width: health + '%'}">
+    <div id="vue-app-one">
+        <h2>{{title}}</h2>
+        <p>{{greet}}</p>
+    </div>
 
-            </div>
-        </div>
-
-        <!-- game controls -->
-        <div id="controls">
-            <table style="position: fixed">
-                <tr>
-                    <td style="width: 50%;">
-                        <button v-on:click="punch" v-show="!ended">Punch</button>
-                    </td>
-                    <td style="width: 50%;">
-                        <button v-on:click="restart">Restart</button>
-                    </td>
-                </tr>
-            </table>
-
-
-        </div>
-
+    <div id="vue-app-two">
+        <h2>{{title}}</h2>
+        <p>{{greet}}</p>
+        <button v-on:click="changeTitle">Change App One Title</button>
     </div>
 
 </body>
