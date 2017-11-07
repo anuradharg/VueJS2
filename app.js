@@ -1,42 +1,47 @@
-var one = new Vue({
-  el: '#vue-app-one',
+/*Vue.component('greeting', {
+  template: '<p>I am a reusable component</p>',
 
-  data: {
-    title: 'View App One'
+  data: function(){
+    name: 'Ryu'
+  }
+});
+*/
+
+/*
+ * Instead of directly using the JSON as a parameter,
+ * have the JSON separately in a variable 
+ * and pass the  variable as a parameter
+ */
+
+var data = {
+  name: 'Yoshi'
+}
+
+var jsonObj = {
+  template: '<p>My name is {{name}}. <button v-on:click="changeName">Change Name</button></p>',
+
+  data: function () {
+    return data
+    /*{
+         name: 'Yoshi'
+       }*/
   },
 
   methods: {
-
-  },
-
-  computed: {
-    greet: function () {
-      return 'Hello from app one';
+    changeName: function () {
+      this.name = "Mario";
     }
   }
+};
+
+Vue.component('greeting', jsonObj);
+
+var one = new Vue({
+  el: '#vue-app-one'
 
 });
 
 var two = new Vue({
   el: '#vue-app-two',
 
-  data: {
-    title: 'View App Two'
-  },
-
-  methods: {
-    changeTitle: function () {
-      one.title = "Title changed";
-    }
-  },
-
-  computed: {
-    greet: function () {
-      return 'Hello from app two';
-    }
-  }
-
 });
-
-two.title = "Changed from outside the code block";
-
